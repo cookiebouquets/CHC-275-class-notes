@@ -106,11 +106,88 @@ def searchdict():
     else:
         print("that is not in the dictionary")
         
-searchdict()
+
         
 """
     the "in" keyword searches for KEYS and not VALUES. So as mentioned earlier, anything can be a value,
     including lists
 """
 
+def usertest():
+    users = {"basmacij":["password",12,"basmacij@calverthall.com"],"cardinalg25":["ilovechc",9,"cardinalg25@chcstudent.com"]}
+    print("password, gradelevel, email")
+    print(users["basmacij"])
+
+    print("password is " + users["basmacij"][0])
+
+"""
+    We made a dictionary comprising of keys (usernames) and values (account information)
+    The values were lists of objects
+    to access objects in a list at a certain key, the syntax is
+    
+    my_dict[key][index]
+    
+    Next thing we want to think about: Loops over dicts. What we have for lists are 
+    
+    for-each or for-i (index) loops
+    
+    dictionaries work basically the same way, but we want to make the distinction that for-each
+    specifically iterates over keys.
+"""
+
+def looptest(dict):
+    for x in dict:
+        print(x)
+        print(dict[x])
+
+
+looptest(my_dict3)
+
+
+"""
+    For each loops iterate over keys, so to get the values make sure you square brackets operator
+    the current key you're at.
+    
+    How do we add to a dictionary. Conventional wisdom is .append(key,value) but dictionaries dont have
+    that function. 
+    
+    What you have to do, is a variable assignment with square brackets
+    
+    ex. mydict[newkey] = newvalue
+"""
+
+my_dict3["key4"] = 4
+print(my_dict3["key4"])
+
+
+"""
+    That also means you update dictionary values the same way.
+"""
+
+my_dict3["key3"] = 1
+print(my_dict3["key3"])
+
+"""
+    When we were working with lists,  when we tried to access a list at an index that doesn't exist,
+    we'd get an index error. 
+    
+    If we try this for a dict, we're gonna get a keyerror
+"""
+
+#print(my_dict3["key5"])
+
+
+"""
+    useful to mention functions for dict: .keys() and .values()
+    
+    .keys() returns a list of all of the keys without their values
+    .values() returns a list of all of the values without their keys
+"""
+
+print(my_dict3.keys())
+print(my_dict3.values())
+
+"""
+    Before we leave, for vocab purposes, python dictionaries are also called hashes, hashtables, hashmaps
+"""
 
