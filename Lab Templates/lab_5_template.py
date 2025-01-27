@@ -20,12 +20,30 @@ def getStudentGrades(directory, student):
 def getStudentGradeLevel(directory,student):
     pass
 
+def getStudentEmail(directory,student):
+    pass
+
+def getStudentsByGradeLevel(directory, gradelevel):
+    pass
+
 def addStudent(directory):
     pass
 
-def removeStudent(directory):
+def removeStudent(directory, student):
+    pass
+
+def updateGrade(directory, student, course):
+    pass
+
+def checkHonorRoll(directory,student):
     pass
 
 def printMenu():
     pass
+
+def main():
+    pass
+
+if __name__ == "__main__":
+    main()
 
