@@ -10,5 +10,9 @@
 """
 
 """
-    Some Announcements:
+    Some Announcements: Tomorrow in day 2, I'm going to release lab 5. It's going to be about the
+    content covered today
+    
+    
+
 """
