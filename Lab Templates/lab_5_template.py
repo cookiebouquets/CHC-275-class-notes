@@ -145,6 +145,7 @@ def printMenu():
 
 def main():
     #TODO: Implement every function in main
+    Students = {}
     pass
 
 if __name__ == "__main__":
