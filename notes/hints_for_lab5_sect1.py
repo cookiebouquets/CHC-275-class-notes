@@ -29,3 +29,38 @@ print(mydict["key1"]["keya"])
     6-9. all of the get functions 
 """
 
+
+"""" 
+    Also, I'll show you fstrings right now
+"""
+
+var1 = 5
+
+print("Var1: " + str(var1))
+print(f"var1: {var1}")
+
+
+""" 
+    fstrings allow you to print variables in line with text without having to typecast your variable a string.
+    
+    The syntax is 
+    
+    print(f"message {variable name}")
+"""
+
+
+""" 
+    In programming, a computer science mindset is to break down a problem into smaller parts and all them all up.
+    addStudent() has a lot going on. So what you should do 
+    
+        1. make a variable called studentname which takes in the input for a name
+        2. make a dictionary called grades = {"math" :0, "english" :0, "religion" : 0, "History" : 0}
+        3. for - loop over the grades dictionary and update the grades
+        4. make a variable called gradelevel which is the student's grade level
+        5. make a variable called email which is a string for the email
+        6. student = {"grades": grades, "grade level" : gradelevel, "email": email}
+        
+        
+        6. directory[studentname] = student
+        
+"""
