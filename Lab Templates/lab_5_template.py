@@ -96,7 +96,7 @@ def removeStudent(directory, student):
 
 def updateGrade(directory, student):
     """
-     Function Name: removeStudent
+     Function Name: updateGrades
         Parameters:
             Directory <dict> : Student Directory that is specified in the main() function
             student <String> : String that corresponds to the student name
