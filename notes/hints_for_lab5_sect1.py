@@ -54,13 +54,12 @@ print(f"var1: {var1}")
     addStudent() has a lot going on. So what you should do 
     
         1. make a variable called studentname which takes in the input for a name
-        2. make a dictionary called grades = {"math" :0, "english" :0, "religion" : 0, "History" : 0}
+        2. make a dictionary called grades = {"math" :0, "english" :0, "religion" : 0, "History" : 0} set all values to 0
         3. for - loop over the grades dictionary and update the grades
         4. make a variable called gradelevel which is the student's grade level
         5. make a variable called email which is a string for the email
         6. student = {"grades": grades, "grade level" : gradelevel, "email": email}
         
-        
-        6. directory[studentname] = student
+        7. directory[studentname] = student
         
 """
