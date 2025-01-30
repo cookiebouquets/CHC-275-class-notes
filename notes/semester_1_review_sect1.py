@@ -144,7 +144,7 @@ def main():
     #everything in its scope 
     print(result)
     
-main()
+#main()
     
     
 """
@@ -154,3 +154,181 @@ main()
     What return does is flag the computer to save the thing after the return keyword 
     The thing is, you now have to save that result into a variable in the scope outside of it 
 """
+
+
+"""
+    What is the return type of input()?
+    
+    How do we check this? 
+"""
+
+#input()
+
+"""
+input return type = string.
+
+practically that means every time we type in input() we're gonna get a string, even if we type in a number
+
+
+"""
+#num= int(input("type ina number "))
+#print(5 + num)
+
+
+
+
+"""
+    we fix this by typecasting
+    
+    int() float() str()
+    
+"""
+
+"""
+    that's everything we have for variables and input() (and also functions kind of)
+    
+    Control structures: 
+        -sequence: evaluate code line by line one after another
+        -selection: a choice has to be made EITHER OR
+        -iteration: repeat a block of code until a condition is met 
+"""
+
+print(1)
+print(2)
+print(3)
+
+#sequence corresponds to line by line execution
+
+"""
+    if-elif-else logic:
+    
+    syntax for this
+    
+    if <condition>:
+    
+    condition has to be something that can be evaluated to true or false
+    
+    examples of conditions
+    
+    5 ==5: True
+    4 == 5: False
+    not 4 ==5: True 
+"""
+"""
+choice = int(input("enter your number: "))
+
+if choice ==5:
+    print("our number is equal to 5")
+else:
+    print("your number is not equal to 5")
+"""
+
+"""
+    we say the thing after the "if" keyword is called the conditional.
+    
+    Question: 
+    
+    Do we know the difference between
+    
+    if
+    if
+    if
+    
+    if
+    elif
+    elif 
+    
+    
+"""
+
+"""
+num = int(input("enter num "))
+
+if num % 2 == 0:
+    print("your number is divisible by 2")
+elif num % 5 == 0:
+    print("your number is divisible by 5")
+"""
+
+    
+"""
+    think of if as a function and the thing underneath being the body. After "if" is done, it will jump
+    past ALL ELIFS AND ELSES
+    
+"""
+"""
+    num = int(input("enter num "))
+if num % 2 == 0:
+    print("your number is divisible by 2")
+if num % 5 == 0:
+    print("your number is divisible by 5")
+"""
+
+    
+    
+"""
+    How do we repeat a line of code? 
+    
+    -while loop
+    -for loop 
+    
+    while loop first
+    
+    syntax for while loop is
+    
+    while <conditional>: 
+"""
+
+num = 1
+while num < 5:
+    print(num)
+    num = num + 1
+    
+"""
+    So what we need for while loops, is GUARANTEE that the while loop will end we did this by incerementing
+    num by 1 until num = 4
+"""
+
+check = True
+while check:
+    option = input("would you like to exit?")
+    if option == "y":
+        check = False
+        
+        
+"""
+    basic menu structure is dependent on a check variable and if statements
+"""
+
+"""
+    lists
+    
+    how do we make an empty list?
+"""
+
+mylist = []
+
+"""
+    square brackets for lists. 
+    
+    lists store multiple variables at addresses called "indices" or "index" (singular)
+    what are the possible values for our indices
+    
+    0,...,len(list)-1
+    
+    its len(list) -1 because 
+    
+    0,....,len(list) is a list of len(list)+1 variables
+"""
+mylist = ["hi","orange","chc"]
+
+"""
+    how do we access lists at a particular index?
+    
+    square brackets
+    
+    list[index]
+"""
+
+print(mylist[1])
+
