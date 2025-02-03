@@ -64,3 +64,4 @@ print(f"var1: {var1}")
         
 """
 
+{'paul george': {'grades': {'English': 59, 'Math': 78, 'History': 97, 'Religion': 89}, 'grade level': 12, 'email': 'paulg27@chcstudent.com'}}

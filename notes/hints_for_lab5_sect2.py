@@ -135,3 +135,17 @@ print(testdict[1][0])
     
     student[grades][course] <== this is how you pull the grades out of the student dictionary
 """
+
+#FEB 3, DAY 6
+
+
+{'paul george': {'grades': {'English': 59, 'Math': 78, 'History': 97, 'Religion': 89}, 'grade level': 12, 'email': 'paulg27@chcstudent.com'}} #< Copy this guy into your dictionary
+
+
+"""
+    Today you should finish working on Calculate GPA and Check Honor Roll
+    
+    For Honor Roll:
+            
+"""
+
