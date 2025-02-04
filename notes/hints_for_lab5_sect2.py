@@ -145,7 +145,19 @@ print(testdict[1][0])
 """
     Today you should finish working on Calculate GPA and Check Honor Roll
     
-    For Honor Roll:
+    For Honor Roll: you can do this pretty much in one line if you're a god, if not then it'll take a for loop
             
+"""
+
+"""
+    Conditions to get honor roll at CHC
+    
+    88 Average and no grades below 81
+    
+    The easiest way to do this is to make a check variable and set it equal to true
+        for loop voer all of the grades in the gradebook
+        if statement to see if any of them are below 81 
+            if one of them is below 81, return false
+        otherwise return calcuate GPA and check
 """
 

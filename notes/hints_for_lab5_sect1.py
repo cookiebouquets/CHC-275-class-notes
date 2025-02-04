@@ -64,4 +64,31 @@ print(f"var1: {var1}")
         
 """
 
-{'paul george': {'grades': {'English': 59, 'Math': 78, 'History': 97, 'Religion': 89}, 'grade level': 12, 'email': 'paulg27@chcstudent.com'}}
+#FEB 4, DAY 1
+
+""" 
+    ANNOUNCEMENT: I'm moving the due date by a whole cycle basically. 
+    
+    If I were you, if you're starting from 0:
+    
+    1. download the template and just edit that file 
+    2. do printmenu()
+    3. Do add student
+    
+    
+    By today, you should have printmenu() and addstudent() done.
+
+"""
+
+"""
+    So the easiest way to do add student
+     
+        1. Just get the studentname
+        2. get the email
+        3. get the grade level
+        4. make a dictionary called grades
+            4a. grades = {"math":0,"english":0,"history":0,"religion":0}
+            4b. for loop over grades
+                4i. in your for loop, update each individual grade
+        5. directory[studentname] = {"grades":grades, "email":email,"gradelevel":gradelevel }
+"""
