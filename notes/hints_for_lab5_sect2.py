@@ -161,3 +161,28 @@ print(testdict[1][0])
         otherwise return calcuate GPA and check
 """
 
+#FEB 5, DAY 1 (LAB 5 IS DUE)
+
+"""
+    Today you should finish up Calculate GPA and Check Honor Roll, and then finish 
+    the get functions
+"""
+
+"""
+    What is a get function? 
+    
+    All a get function does is return the attributes corresponding to the function
+    name
+    
+    So for example:
+    
+    getStudent()
+    
+    should just return directory[student]
+    
+    The reason why this is important at all is you assume all variables and data
+    structures are private inherently. So if you have a user of your program, you should
+    be able to choose what data they access. So get functions facilitate that 
+    
+    So all get functions are just one-liners 
+"""
