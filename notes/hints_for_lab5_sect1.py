@@ -92,3 +92,33 @@ print(f"var1: {var1}")
                 4i. in your for loop, update each individual grade
         5. directory[studentname] = {"grades":grades, "email":email,"gradelevel":gradelevel }
 """
+
+#FEB 5, DAY 2
+
+"""
+    Today you should work on CalculateGPA and checkHonorRoll
+    
+    The real question we have for calculate GPA is how do you get the grade data
+    out of the student dictionary
+    
+    directory = all students
+    students = grades, grade level, email
+    grades = subjects and their grades
+    
+    You're going to have to use square brackets
+    
+    
+    for calculate GPA, there are two parameters, directory and student and to access
+    "nested" data, all you need to do is use a second and third set of square brackets
+    
+    dict[key] will return value
+    
+    if value was also a dictionary you would just this 
+    
+    dict[key][value] will return the value at value
+    
+    directory[student]["grades"] <== for loop over this and add up the GPA
+    
+    so after forloop and add to GPA,
+    return GPA/4
+""" 
