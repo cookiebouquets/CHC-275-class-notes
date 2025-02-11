@@ -28,3 +28,105 @@ For juniors: Course Recommendations are live, see me if you wish to discuss next
     
     I'd recommend this course to either Prep B guys are people looking for a lower stakes elective. 
 """
+
+""" 
+Last time we talked about importing files. 
+
+    1) allows for easy collaboration
+    2) allows for extreme reusability of code - we want this in particular
+    3) also is the most basic version of Objected Oriented Inheritance <- we'll talk about this later
+    
+    
+    recall: 
+    
+    1) we have to be in the working directory where every file is stored. (every being the one you want to import and also 
+    the one you're working on)
+    2) you need to use the import keyword
+    3) you can either import one function, multiple functions, or all of them
+    4) you can rename the file 
+    
+    keywords: These are modules in python 
+"""
+
+import helpfunctionsforstatistics
+import testfunctions.goofy
+import testfunctions.test
+
+mylist = [1,2,3,4,5]
+
+print(helpfunctionsforstatistics.getMean(mylist))
+
+""" 
+this is how you import things in a very basic fashion.
+
+Other things we can do: we can rename the file temporarily 
+"""
+
+
+import helpfunctionsforstatistics as stats
+
+print(stats.getMax(mylist))
+
+"""
+We can also import specific functions into our file
+"""
+
+from helpfunctionsforstatistics import getMedian
+
+print(getMedian(mylist))
+
+""" 
+So the original syntax was 
+
+<other file name>.<function> 
+
+but if we import specifically one or more functions, we can just call the function as if it was already built into python
+"""
+
+from helpfunctionsforstatistics import getMax,getMin
+
+print(getMax(mylist))
+print(getMin(mylist))
+
+
+""" 
+The question we want to have answered is:
+
+    In our organization, we don't have certain permissions on seeing certain files in other folders,
+    
+    i.e. the file we're currently working on is in a separate folder from the module we wish to import 
+"""
+
+import sys 
+sys.path.insert(0,"../testfunctions")
+import testfunctions
+
+testfunctions.test.example()
+
+""" 
+So to import from another folder, all we need to is use the sys module and open the path using sys.path.inset(0,"pathname")
+then, we should be able to import the file as folder.filename 
+"""
+
+
+
+"""
+So let's test for multiple files in this one folder.
+
+If I just import the entire folder, we should get access to .test and .goofy
+"""
+
+import testfunctions
+
+testfunctions.test.example()
+testfunctions.goofy.hello()
+
+"""
+So we got both files from just importing the folder. A collection of files is still called a module or a package
+(in other languages)
+"""
+
+
+""" 
+So we covered modules today, expect to see it in lab 6
+"""
