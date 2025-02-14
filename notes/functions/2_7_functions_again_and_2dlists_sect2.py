@@ -163,7 +163,7 @@ print(x)
     import the behavior automatically and only write it one time ever in our life 
 """
 
-import notes.functions.helpfunctionsforstatistics as help
+import notes.functions.testfunctions.helpfunctionsforstatistics as help
 
 mylist = [2,5,6,7,9]
 avg = help.getMean(mylist)

@@ -48,8 +48,8 @@ Last time we talked about importing files.
     keywords: These are modules in python 
 """
 
-import helpfunctionsforstatistics
-import testfunctions.goofy
+import notes.functions.testfunctions.helpfunctionsforstatistics as helpfunctionsforstatistics
+import notes.functions.testfunctions.specifictests.goofy
 import testfunctions.test
 
 mylist = [1,2,3,4,5]
@@ -63,7 +63,7 @@ Other things we can do: we can rename the file temporarily
 """
 
 
-import helpfunctionsforstatistics as stats
+import notes.functions.testfunctions.helpfunctionsforstatistics as stats
 
 print(stats.getMax(mylist))
 
@@ -71,7 +71,7 @@ print(stats.getMax(mylist))
 We can also import specific functions into our file
 """
 
-from helpfunctionsforstatistics import getMedian
+from notes.functions.testfunctions.helpfunctionsforstatistics import getMedian
 
 print(getMedian(mylist))
 
@@ -83,7 +83,7 @@ So the original syntax was
 but if we import specifically one or more functions, we can just call the function as if it was already built into python
 """
 
-from helpfunctionsforstatistics import getMax,getMin
+from notes.functions.testfunctions.helpfunctionsforstatistics import getMax,getMin
 
 print(getMax(mylist))
 print(getMin(mylist))
@@ -119,7 +119,7 @@ If I just import the entire folder, we should get access to .test and .goofy
 import testfunctions
 
 testfunctions.test.example()
-testfunctions.goofy.hello()
+notes.functions.testfunctions.specifictests.goofy.hello()
 
 """
 So we got both files from just importing the folder. A collection of files is still called a module or a package
