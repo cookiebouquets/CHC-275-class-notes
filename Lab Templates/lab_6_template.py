@@ -23,7 +23,7 @@ def switchPlayer(player):
     """
     Switches player from X to O or O to X
     
-        PARAMETERS:
+        PARAMETERS: 
         Player (STR): Corresponds to the current player
         
         Return Type:
