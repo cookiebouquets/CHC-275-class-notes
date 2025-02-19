@@ -52,6 +52,7 @@ def checkWinner(board,player):
     
         PARAMETERS:
         board(2d list): Game board
+        player(STR): Current player being checked for victory
         
         Return Type:
         (BOOL): True if win False if not win 
