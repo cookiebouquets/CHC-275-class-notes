@@ -47,6 +47,57 @@ BOARD = [
 
 """
     Some important things to remember: Board is a 6 x 7 grid
+    
+    If you try to access data outside of the list indices, python is not going to let you.
+    
+    So the algorithm for check winner is basically the same thing as tic tac toe (except its a 4x4 square)
+    
+    But the problem is, the board is a 6x7 grid. So the question is, how do we check 4x4 winners on a 6x7 grid?
+    The answer to this is to do nested forloops. So every condition can by checked with a 
+    
+    for x in _
+        for y in _ 
+        
+    structure
+    
+    There's one problem though, if you remember from tic tac toe where we checked
+    
+    board[x][y] board[x+1][y] and board[x+2][y], we're gonna have a compilation error if we do a for loop
+    over the whole board and check those same indices 
+    
+    
+    so you're gonna go out of bounds if you check board[5+dx][y]
+    
+    and same for board[x][6+dy] 
+    
+    So the thing about range is you can specify the endpoint to be length-some number
+    
+             [x,x,x,x,0,0,0],
+             [0,x,x,x,x,0,0],
+             [0,0,x,x,x,x,0],
+             [0,0,0,x,x,x,x],
+             [0,0,0,0,x,x,x]x, <- compilation error 
+             [0,0,0,0,0,0,0],       
+             
+             
+
+    so all you need to do is rather than check the whole row, you only need to do a for loop up until the 4th
+    element
+
+    Vertical victories
+    
+     [x,0,0,0,0,0,0],
+     [x,x,0,0,0,0,0],
+     [x,x,x,0,0,0,0],
+     [x,x,x,x,0,0,0],
+     [0,x,x,x,0,0,0],
+     [0,0,x,x,0,0,0],
+            x 
+            ^ compilation error  
+            
+            
+    So really the problem with check winner is what to the range() function, and if you think about
+    what indices will screw you over, you just stop at the length minus the part that kills you
 """
 
 print(BOARD[8][5])
