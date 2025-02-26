@@ -102,3 +102,8 @@ BOARD = [
 
 print(BOARD[8][5])
 
+#FEB 26, DAY 2
+
+""" 
+    We should be just about done the lab now - final touches 
+"""

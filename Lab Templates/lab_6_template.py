@@ -83,9 +83,10 @@ def main():
     ]
 
     CURRENT_PLAYER = "X"
-        
-    
-    
+    #what switch player does is checks to see if current player = x
+    #if it is, return O
+    #if its not, return X 
+    CURRENT_PLAYER = switchPlayer()
     
 if __name__ == "__main__":
     main()

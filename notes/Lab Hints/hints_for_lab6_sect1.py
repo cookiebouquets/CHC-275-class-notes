@@ -163,3 +163,121 @@ BOARD = [
 """
 
 #Today just finish drawBoard() and switchPlayer()
+
+
+#FEB 26, DAY 2
+"""
+Today you should be working on dropPiece() and start working on checkWinner() if you finish dropPiece() today. 
+
+In tictactoe all you have to give is a (row,column) pair and then the piece gets placed at that coordinate. Connect 4 is different because
+all you're doing is choosing a column and then the piece drops to the first available slot in that column 
+
+ dropPiece(board,player,column)
+ 
+ board - game board
+ player - curren t player
+ column - is the column the player chooses in main() - a number
+ 
+ board[][column]
+ 
+ what you need to do:
+    - check to see if board[0][column] == 0
+        if it is, you continue the function
+        if its not, return False
+ 
+ 
+    - create a variable x = 0
+    - while loop over x < 6 
+        - if board[x][column] == 0 
+            - increment x
+        - else:
+            - break
+    - after the while loop you should have an (x,column) pair that will be the piece that is exactly one MORE than the first available slot
+    - board[x-1][column] = player
+    - return true
+    
+
+"""
+
+
+""" 
+Check Winner: 
+
+Connect 4 is just a tictactoe game over a 6x7 board. You want 4 in a row but on a larger board
+
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],  
+             
+What you need to do is do nested forloops that give x,y pairs over all of the pieces on the board
+
+             [X,X,X,X,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],  
+             
+For horizontal victories, you need to check
+
+currentpos, currentpos + 1, currentpos + 2, currentpos + 3 in the x direction
+
+             [X,0,0,0,0,0,0],
+             [X,0,0,0,0,0,0],
+             [X,0,0,0,0,0,0],
+             [X,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],  
+
+left diagonal is +x +y
+
+right diagonal is different
+
+             [0,0,0,X,0,0,0],
+             [0,0,X,0,0,0,0],
+             [0,X,0,0,0,0,0],
+             [X,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],  
+             
+right diagonal is +x -y
+
+
+             [0,0,0,0,X,X,X], X <= error here
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],  
+             
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [X,0,0,0,0,0,0],
+             [X,0,0,0,0,0,0],
+             [X,0,0,0,0,0,0],  
+              X <= error
+              
+             [0,0,X,0,0,0,0],
+             [0,X,0,0,0,0,0],
+             [X,0,0,0,0,0,0],
+    error ->X[0,0,0,0,X,0,0],
+             [0,0,0,0,0,X,0],
+             [0,0,0,0,0,0,X],  
+                            X    <- error         
+             
+        range(len(board))
+        range(len(board)-3)
+        range(len(board[0]-3))
+        range(3,len(board[0]))              
+        range(3,len(board))
+        
+        you need to change the range for almost ALL of your for loops, for diagonals, BOTH for loops will have different ranges  
+"""
+
+
+
+
