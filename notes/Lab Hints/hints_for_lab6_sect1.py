@@ -264,10 +264,10 @@ right diagonal is +x -y
              [0,0,X,0,0,0,0],
              [0,X,0,0,0,0,0],
              [X,0,0,0,0,0,0],
-    error ->X[0,0,0,0,X,0,0],
+   error => X[0,0,0,0,X,0,0],
              [0,0,0,0,0,X,0],
              [0,0,0,0,0,0,X],  
-                            X    <- error         
+                            X <= error         
              
         range(len(board))
         range(len(board)-3)
