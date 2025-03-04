@@ -240,3 +240,86 @@ Hint: You just need to XOR again by the key.
     
     
 """
+
+#MAR 4, DAY 6
+
+""" 
+    Today we are going to cover two functions in python, ord() and chr() which are pivotal to 
+    advanced string manipulation in python.
+    
+    So last class i covered binary and hex number systems. So there's a thing called ASCII
+    
+    ASCII - international standard for character representation for computing devices. This means that 
+    all computers follow the same protocol for displaying text.
+    
+    1 byte = 8 bits = 00000000 
+    the max number you store in a byte is exactly 255. 
+    
+    11111111 <= this is 255 
+    
+    What ASCII does is takes the most common 255 characters in any alphabet and assigns them to a number. 
+    
+    a = 67
+    
+    So that means when we type in strings, they are interpreted as binary numbers with equivalencies to
+    their ASCII values.
+    
+    So you know that binary numbers are how computers work, this is then extended to ASCII
+    
+    In python, we want to manipulate strings both as characters and also numerically. In other languages
+    
+    like, C, C++, Java, individual characters have their datatype called char, but in python, chars are 
+    just one character strings. 
+    
+    Chars = one character in ascii + their underlying numerical value 
+    
+    In python we don't have chars, we only have strings. So to work around this there are two python
+    functions that go back and forth between numerical ASCII value and individual characters
+    
+    chr(<num>) = converts num to ASCII character
+    chr stands for char
+    
+    ord(<char>) = converts ASCII character to num 
+    ord stands for order which is a math term
+    
+    Remember that strings in python are also lists. lists of individual characters
+"""
+
+message = "Lets go CHC!"
+#I want to convert this to its individual ASCII values
+
+converted = []
+for char in message:
+    converted.append(ord(char))
+
+print(converted)
+
+"""
+    Now we have a list called converted and its a list of numbers so no we can do math on these numbers.
+    
+    Application of this is cryptography. 
+    
+    One of the most common ciphers (method of encryption) is called the Caesar Cipher. What this does is
+    takes all of the ASCII values and shifts them over by a certain number. (shift cipher)
+    
+    For example, 
+    
+    CHC + 3 -> FLF <= Encrypted text after a caesar cipher. 
+    
+    How can automate this? and also this kinda sucks to do by hand.
+"""
+shifted = []
+for num in converted:
+    num = num+3
+    shifted.append(num)
+    
+print(shifted)
+    
+#Now we have shifted ASCII Values, now we can convert them back into our letters using chr()
+
+encrypted = ""
+for num in shifted:
+    encrypted = encrypted + chr(num)
+
+print(message)    
+print(encrypted)
