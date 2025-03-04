@@ -321,5 +321,76 @@ encrypted = ""
 for num in shifted:
     encrypted = encrypted + chr(num)
 
-print(message)    
-print(encrypted)
+print(f"Original Message {message}")    
+print(f"Encrypted message {encrypted}")
+
+
+#Now how do we decrypt this? We can do the same process but backwards. If our messahe was shifted +3
+#We need to shift it minus three
+
+converted = []
+for char in encrypted:
+    converted.append(ord(char))
+    
+    
+decrypted = ""    
+for num in converted:
+    num = num - 3
+    decrypted = decrypted + chr(num)
+    
+print(f"decrypted text: {decrypted}")
+
+""" 
+    This is an example of a shift/caesar cipher. In the lab you'll probably have to implement a more
+    complicated encryption scheme than this. 
+    
+    So you can get pretty creative with this stuff 
+"""
+
+message = "CHC"
+keys = [3,7,45]
+
+converted = []
+for char in message:
+    converted.append(ord(char))
+
+
+print(converted)
+
+encrypted = ""
+for i in range(len(converted)):
+    enc = converted[i] + keys[i]
+    enc = chr(enc)
+    encrypted = encrypted + enc
+
+        
+print(f"Original Message:  {message}")
+print(f"Encrypted Message: {encrypted}")
+#So now we took our message and encrypted it using a variable list of keys
+
+""" 
+    This is much better than the Casear Cipher obviously because of something called frequency analysis
+    
+    In a message of 30 or more characters, the english alphabet tends to follow a certain distribution. 
+    The caesar cipher does not change the distribution, all it does is shift it left or right
+    
+    So in our new example where we had a different key for each character, this is now not nearly as
+    susceptible to a frequency analysis attack on our encrypted message. 
+"""
+converted = []
+for char in encrypted:
+    converted.append(ord(char))
+    
+decrypted = ""
+for i in range(len(converted)):
+    enc = converted[i] - keys[i]
+    enc = chr(enc)
+    decrypted = decrypted + enc
+    
+print(f"Decrypted message {decrypted}")
+
+""" 
+    This is basically all I have planned for this class. The lab is going to be stuff on binary/hex
+    
+    and then also cryptography/string manipulation using ord() and chr() 
+"""
