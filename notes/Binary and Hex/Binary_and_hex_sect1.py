@@ -134,7 +134,7 @@ print(byte)
     #0000FF < Blue
     
     
-    So really the individual byte registers correspond to the intensity of Red,Green,Blue
+    So really the individual byte registers correspond to the intensity of Red, Green, Blue
     
     (255,255,255)
     
