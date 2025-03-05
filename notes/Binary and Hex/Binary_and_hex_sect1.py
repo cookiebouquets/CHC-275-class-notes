@@ -121,7 +121,7 @@ print(byte)
     dabd5c
     
     0000 0000 0000 0000 0000 0000
-        R         G          B
+        R         G         B
         
     RGB color palette all 0s is black
     
