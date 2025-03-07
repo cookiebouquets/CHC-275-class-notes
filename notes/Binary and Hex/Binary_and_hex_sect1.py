@@ -81,7 +81,7 @@
 """
 
 byte = 2**0 + 2**1 + 2**2 + 2**3 + 2**4 + 2**5 +2**6 + 2**7
-print(byte)
+#print(byte)
 
 """
     The biggest number you can store in a byte is 255.
@@ -143,4 +143,153 @@ print(byte)
     Next class ord() and chr() and ASCII
     
     
+"""
+
+#DAY 3, MARCH 7
+
+""" 
+    Today I'm going to talk about encoding data (ASCII) and how you can in python (ord()) and (chr())
+    and also applications of these things (cryptography)
+    
+    Last class we discussed Binary and Hex Numbers. We also know the largest number we can store in a byte
+    is 255. There is an international standard for how characters are represented on computers. 
+    
+    When you type in a letter, its going to get "encoded" into a number
+    
+    encoding = assigning numerical values to data that is not inherently numerical.
+    
+    Strings = not numerical, we can encode this (ASCII)
+    
+    pictures = not numerical, we can encode this (rgb)
+    
+    ASCII takes the most common 255 roman-numeric characters and assigns to a number between 1-255.
+    
+    a = 67 in ASCII
+    
+    we can do math on things with their ASCII values.
+    
+    In other programming languages, individual characters of strings have their own primitive data type
+    
+    chars <= individual character of a string
+    
+    and what chars have is two pieces associated with them
+    
+        1) their graphical representation (Letters and stuff)
+        2) ASCII numerical value
+        
+    In python however, wwe don't have char as a datatype. We have two functions that behave pretty much
+    identically to chars which are called
+    
+    chr(<num>) = converts a number to its lexicographic representation
+    ord(<char>) = converts a character to its ASCII value
+    
+    These two functions are basically inverses of each other (for those in precalc/alg 2).
+    
+    chr() the name is pretty obvious were it comes from, its shorthand for char
+    
+    ord() is not nearly as obvious, it comes from the word "order" which is a math term for things that
+    loop around. 
+    
+"""
+
+
+char = "a"
+
+print(ord(char))
+#ASCII value of "a" is 97
+
+num = 58
+print(chr(num))
+#ASCII char of 58 is ":"
+
+""" 
+    How is this stuff useful at all in the slightest? 
+    
+    We all have kinda heard what cryptography is. The use of encoding our non-numerical data into ASCII is 
+    to do cryptography pretty effectively 
+    
+    What cryptography essentially is - the encoding of data in a secure way so that malicious actors cant 
+    figure what the message is
+    
+        plaintext = your message
+        key = the key by which you encrypt your message
+        ciphertext = your message after encrypting it 
+        
+    So the question is, how do we make ciphertexts? Let's do an example
+    
+    plaintext is CHC the easiest way to encrypt this is to use a Shift Cipher
+    
+    Shift Cipher -> takes all ASCII values and shifts them over by a certain number
+    
+    plaintext is CHC
+    key is +3
+    ciphertext is FKF
+    
+    This is the most basic form of encryption
+    
+    To decrypt, you would just do -3. 
+    
+    This example is super easy because there are only 3 letters that we're manipulating. What about large strings
+    of text?
+
+    
+"""
+
+plaintext = "Here, you can explore your passions to reach your potential and realize your purpose, on our campus and in the world beyond. A Calvert Hall education is a transformative experience that continues long after graduation. Our students become Men of Intellect, Men of Faith, and Men of Integrity, and the relationships they develop over four years at The Hall last forever."
+#I want to do a shift cipher on this +3, but there is hundreds of characters in here. How do we automate this in python?
+key = 3
+converted = []
+for char in plaintext:
+    encode = ord(char)
+    converted.append(encode)
+    
+#print(converted)
+encrypted_nums = []
+for num in converted:
+    enc = num + key
+    encrypted_nums.append(enc)
+    
+#print(encrypted_nums)
+ciphertext =""
+for num in encrypted_nums:
+    char = chr(num)
+    ciphertext = ciphertext + char
+
+print(plaintext)
+print(ciphertext)
+
+#Decryption
+converted = []
+for char in ciphertext:
+    converted.append(ord(char))
+    
+decrypted = ""
+
+for num in converted:
+    decrypted = decrypted+ chr(num - key)
+    
+print(decrypted)
+
+""" 
+    This is our Shift Cipher Example.
+
+    In Lab 7, 
+    
+        -you'll be implementing RSA encryption
+    
+        -you'll also be manipulating images with RGB values
+        
+    So other things that are of importance with ASCII values:
+    
+        -you'll definitely need to remember what % does. 
+        
+        % is mod 
+        
+        mod = division by a number and it returns the remainder
+        
+        15 mod 7 = 1
+        
+    Many things in cryptography involve the use of % (ESPECIALLY RSA) so you'll need to use it in Lab 7. 
+    
+    Next Class I'm assigning lab 7
 """
