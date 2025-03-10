@@ -1,3 +1,10 @@
+"""
+Name:
+Section:
+Description: Template for Lab 7
+"""
+
+
 def fast_mod_exp(b, exp, m):
     """
     TO BE USED IN RSA 
