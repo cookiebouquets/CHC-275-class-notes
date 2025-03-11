@@ -1,6 +1,6 @@
 """
 Name:
-Section:
+Section: 
 Description: Template for Lab 7
 """
 
@@ -76,11 +76,11 @@ def converttotext(message):
 
 
 def shift(message,key):
-    """Performs Shift Cipher on LIST of ASCII Values
+    """Performs Shift Cipher on LIST of ASCII Values.
 
     Args:
         message (List): List of ASCII Values
-        key (Integer: Integer that you are shifting message by
+        key (Integer): Integer that you are shifting message by
 
     Returns:
         List: Shifted List of ASCII Values
@@ -88,7 +88,7 @@ def shift(message,key):
     pass
 
 def generate_key(message, key):
-    """Generates Extended Key (if needed) for Vigenere Cipher
+    """Generates Extended Key (if needed) for Vigenere Cipher.
 
     Args:
         message (String): String of Original Message
@@ -101,7 +101,7 @@ def generate_key(message, key):
 
 
 def vigenereEncrypt(plaintext,key):
-    """Encrypts plaintext by Vigenere Cipher
+    """Encrypts plaintext by Vigenere Cipher.
 
     Args:
         plaintext (List): List of ASCII Values for plainText
@@ -113,7 +113,7 @@ def vigenereEncrypt(plaintext,key):
     pass
 
 def vigenereDecrypt(Ciphertext,key):
-    """Decrypts Ciphertext by Vigenere Cipher
+    """Decrypts Ciphertext by Vigenere Cipher.
 
     Args:
         Ciphertext (List): List of ASCII Values for CipherText
