@@ -70,7 +70,7 @@ def converttotext(message):
         message (_List_): List of ASCII Values to be converted to a string
         
     Return: 
-        Converted (_string_): Converted message
+        Converted (_str  ing_): Converted message
     """
     pass
 
