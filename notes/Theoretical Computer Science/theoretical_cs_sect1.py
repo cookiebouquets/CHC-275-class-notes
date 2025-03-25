@@ -233,3 +233,227 @@ O(n) is next most preferable
 O(n log n) is next most preferable
 O(n^2) is typically considered very bad
 """
+
+#MAR 25, DAY 2
+""" 
+Today we're going to cover recursion
+
+Basically what recursion is = just a function that calls itself.
+
+Vocab Review:
+
+Function call = When you use the function in the body of another code block
+
+print() is a function call
+
+list.append() is a function call
+
+a function that is recursive is a function that calls itself.
+
+The easiest example of this is a countdown
+"""
+
+
+"""
+For every recursive function, you need to have a base case, because if you don't 
+you have no way of exiting the recursive function.
+
+Just like in a while loop, you need a way to escape the code block
+"""
+
+    
+"""
+Let's do n = 5
+
+n = 5
+if n < 1 
+    return 0 <== this isn't happening
+    
+print(time)
+return countdown(5-1)
+
+n = 4
+if n < 1 
+    return 0 <== this isn't happening
+    
+print(time)
+return countdown(4-1)
+.
+.
+.
+n = 0 
+if n < 1 
+    return 0 <= now it will work
+"""
+
+def countdown(n):
+    if n < 1:
+        return 0
+    
+    print(f"T = {n}")
+    return countdown(n-1)
+
+countdown(5)
+
+""" 
+So countdown is the most basic example of recursion, there are more less obvious
+examples.
+
+Factorial is 
+
+x! = (x)*(x-1)*(x-2)*...*1
+x! = x *(x-1)!
+
+
+What is the base case for factorial:
+
+0! = 1
+"""
+def factorial(n):
+    #Base Case
+    if n == 0:
+        return 1
+    #Recursive Case
+    temp = n * factorial(n-1)
+    
+    #Returning Result at the end
+    return temp
+    
+print(factorial(5))
+
+""" 
+The best way to think about recursion is like a ladder
+
+in our factorial case, we're returning temp as the answer of our overall factorial
+and then we go down the ladder for every n-1 up until 0
+
+n = 5
+
+5 * factorial(5 -1 ) - > 4*factorial(4-1) - > 1*factorial(0) <= this is going down
+
+1*1 * 2*1 * 3*1 *4*1 *5*1 -> Going back up the ladder
+
+So understanding how recursion works is really hard, you kinda just have to 
+implement it a bunch of times until you get it to work properly in your mind
+
+it's an experience thing
+"""
+
+""" 
+The next recursive operation that you've probably heard of is the fibonacci numbers
+
+fib(n) is a function 
+
+base case
+fib(0) = 1
+fib(1) = 1
+
+fib(n) = fib(n-1) + fib(n-2)
+
+fib(0) = 1
+fib(1) = 1
+fib(2) = fib(1) + fib(0) = 2
+fib(3) = fib(2) + fib(1) = 2 + 1 = 3 
+fib(4) = fib(3) + fib(2) = 3 + 2 = 5
+.
+.
+.
+
+""" 
+def fib(n):
+    #Base Case
+    if n in [0,1]:
+        return 1
+    else:
+        #Recursive Case
+        return fib(n-1) + fib(n-2)
+        
+print("fib")
+print(fib(4))
+
+""" 
+This is our fibonacci sequence.
+
+countdown, factorial, fibonacci sequence are things you wouldn't see in practice
+
+Where recursion really comes up is in pathfinding algorithms <- this is why
+we spent a lot of time on asymptotic analysis and why there's a whole class on it 
+next year.
+
+
+"""
+
+
+BOARD = [ 
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,"X",0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],        
+    ]
+
+"""
+We're going to do a basic pathfinding algorithm. 
+
+We're going to have these postulates (A postulate is an assumption):
+    1) 0s are open space. We can pass through 0s.
+    2) The edges of the board are places you can't cross. So you can't fall off
+    the end of the board
+    3) We want to find X 
+    
+So if we were to write an algorithm to do this:
+
+The naive way is to just search each piece of the board. There's one problem what
+happens if X is the very last entry 
+
+
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,"X"],  
+
+We'd have to search the entire board. Searching a 2dlist in its entirety is O(n^2)
+
+for row:
+    for col:
+    
+The question is: Is there a better way? 
+
+    1)Pick a coordinate on the board on the board
+    2)Recursively search in the Y direction
+    3)If you don't find it, recursively search in the X direction
+    4)If you don't find it after that, pick a different coordinate and do it again
+    
+
+This algorithm should be faster than searching the whole board, because if we pick the
+coordinate where the X lies in the row or column that we selected, then we'd only
+have to search at most 12 elements
+
+The idea is, on average this algorithm should perform better than searching the entire
+board.
+"""
+
+def search(board,current):
+    x,y = current
+    
+    
+    #This is our base case
+    if x < len(board)-1 and y < len(board[0]) -1:
+        if board[x][y] == "X": 
+            return current
+    
+    #Search the whole column
+    search(board,(x-1,y))
+    search(board,(x+1,y))
+    #Search the whole row
+    search(board,(x,y-1))
+    search(board,(x,y+1))
+    
+    #This algorithm should find the X in our board
+    
+
+print(search(BOARD,(3,2)))
+    
