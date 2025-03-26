@@ -385,12 +385,12 @@ next year.
 
 
 BOARD = [ 
-             [0,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0],
-             [0,0,0,0,"X",0,0],
-             [0,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0],        
+             [0,1,1,1,0,0,0],
+             [0,1,0,1,1,0,0],
+             [0,0,0,0,0,1,0],
+             [0,0,1,1,0,0,1],
+             [0,1,0,0,1,0,1],
+             [0,1,0,0,1,0,0],        
     ]
 
 """
@@ -436,24 +436,182 @@ The idea is, on average this algorithm should perform better than searching the 
 board.
 """
 
-def search(board,current):
-    x,y = current
+#RECURSION DAY 2
+""" 
+Today we're going to go over more examples of recursion (and also attempt to do the grid search algorithm
+again).
+
+The next thing we're going to do is palindrome.
+
+We've done palindrome before: we're just confirming whether or not a word is a palindrome. 
+
+A palindrome = A word that is spelled the same way backwards
+
+RACECAR
+TACOCAT
+
+The original palindrome algorithm that we wrote:
+
+    1. Input word
+    2. Create a new variable and saved the reversed word into this variable
+    3. check if the word = reversed word
     
     
-    #This is our base case
-    if x < len(board)-1 and y < len(board[0]) -1:
-        if board[x][y] == "X": 
-            return current
+There are some technical considerations:
+
+    1. Time complexity: Palindrome done this way is O(2n)
+        a. We have take our word and reverse it (One for loop)
+        b. We have to a second for loop and check character by character if the word is a palindrome (n + n)
+        
+    2. Memory Complexity: We had to instantiate a seperate variable entirely in order to have something to
+    compare to 
+        a. effectively doubling the memory requirement of our program
+        
+        
+If we do this recursively 
+
+    1. We should have the same time complexity O(n)
+    2. We don't need to make another variable
+        
+"""
+
+def iterpalindrome(word):
+    #Regular Palindrome
+    reverse = ""
+    for char in word:
+        reverse = char + reverse
     
-    #Search the whole column
-    search(board,(x-1,y))
-    search(board,(x+1,y))
-    #Search the whole row
-    search(board,(x,y-1))
-    search(board,(x,y+1))
+    if reverse == word:
+        return True
+    else:
+        return False
     
-    #This algorithm should find the X in our board
+print("Iterative Palindrome:")
+print(iterpalindrome("tacocat"))
+
+""" 
+Now if we want to do it recursively, all we have to do is compare the beginning and end of the string
+and compare the next two ... up until the end
+
+abcdcba
+a     a
+ b   b
+  c c
+   d
+   
+basecase: Check the middle letter and just return true
+
+recursive case: check the ends of each substring
+"""
+
+def recursivepalindrome(word):
+    #Base Case
+    if len(word) == 1:
+        return True
+    
+    
+    #Recursive Case
+    if word[0] == word[len(word) -1]: 
+        return recursivepalindrome(word[1:len(word) - 1])
+    else:
+        return False
+
+print("Recursive Palindrome: ")
+print(recursivepalindrome("racecar"))
+
+""" 
+So our recursive palindrome works differently than our iterative palindrome. 
+
+1. We use the same time complexity
+2. We use a better space complexity because we don't make a separate variable for the reversed word.
+
+
+Last class we talked grid search
+
+our objective was find the X in the list. This time I'm going to create a maze and what I want to do is 
+return the path that leads to the exit.
+
+We're starting from the top left and the exit is the bottom right. and we want to return the path
+that gives us a way to the exit
+"""
+
+""" 
+Return a path that takes us from top left to bottom right recursively, we only need to go in two directions
+down and to the right
+
+What we want to do is make a list called path and just remove the elements that don't end up in the right spot
+
+
+"""
+BOARD = [ 
+             [0,1,1,1,0,0,0],
+             [0,1,0,1,1,0,0],
+             [0,0,0,0,0,1,0],
+             [0,0,1,1,0,0,1],
+             [0,1,0,0,1,0,1],
+             [0,1,0,0,1,0,0],        
+    ]
+
+
+def valid_move(x,y,BOARD):
+    #Valid move is going to return true if the move is valid
+    #A Valid move is one that doesn't go off the edges of the board and doesn't hit a 1
+    return 0 <= x < len(BOARD) and 0 <= y < len(BOARD[0]) and BOARD[x][y] == 0
+
+def pathfind(x,y,BOARD,path):
+    #This is our Recursive Function
+    
+    #BASE CASE, if we make to the bottom right we just append that coord to the list
+    if x == len(BOARD) -1 and y == len(BOARD[0]) -1:
+        path.append((x,y))
+        return True
+        
+    #RECURSIVE CASES, down first 
+    if valid_move(x,y,BOARD):
+        path.append((x,y))
+        
+        #Down Case
+        if pathfind(x+1,y,BOARD,path):
+            return True
+    
+        #Right Cased
+        if pathfind(x,y+1,BOARD,path):
+            return True
+
+        #If the move isn't valid, backtrack 
+        path.pop()
+    return False
     
 
-print(search(BOARD,(3,2)))
-    
+def gridsearch(Board):
+    path = []
+    if pathfind(0,0,Board,path):
+        return path
+    else:
+        return "Path not found"
+
+
+print(f"Path: {gridsearch(BOARD)}")
+""" 
+Our print statement printed the valid path for our maze recursively. This is usually the biggest application
+of recursion 
+
+LAB 8: Labrynth
+
+Our goal is to have two path findings at the same time in LAB 8
+
+The person trying to escape: This person is trying to go from the the top left down to the bottom right 
+
+The minotaur: Start in the center and try to intercept the person trying to escape
+
+If the minotaur reaches the spot the person is going to, then the minotaur wins, but if the person
+gets to the end then the person wins.
+
+The minotaur will go in random directions around the labrynth to simulate AI, and the person will use an 
+optimal path finding algorithm. 
+
+LAB 8 is definitely going to be the hardest lab and its the last lab of the class
+"""
+
+
+
