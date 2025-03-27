@@ -614,4 +614,139 @@ LAB 8 is definitely going to be the hardest lab and its the last lab of the clas
 """
 
 
+#MARCH 27, DAY 4
+""" 
+Today we're going to cover object oriented programming
 
+So Object Oriented Programming was invented in probably the 80s and what it aims to do is make programming
+more similar to natural language (on top of some other technical things that are not relevant right now)
+
+subject verb object
+
+subject.verb(object)
+
+list    . append (item)
+subject   verb   object
+
+object oriented code looks more like sentences where subjects (objects) do something (function calls)
+to objects (objects)
+
+Object Oriented Code has these postulates
+
+    1) Objects are instances of classes 
+    2) classes have their own
+        a) data types
+        b) member functions
+        
+We were working with what is called imperative programming before. What OOP does is abstract away
+a lot of the scoping issues into things that make more sense
+
+Class: A template to create objects that has member variables and member functions
+    1) member variables are commonly called attributes
+    2) member functions are commonly called methods
+    
+A class has its own attributes and methods
+
+Object: An instance of a class
+    1) An instance is a version of the class being implemented
+        "number" is a class and "1" is an instance of the "number" class
+        "animal" is a class and "dog" is an isntance of the "animal" class
+        
+So you'll hear the phrase "Everything in python is an object" commonly.
+
+How do we make a class: 
+
+There is a class keyword in python that tells python that you're about to make a class
+"""
+
+class dog:
+    #Created Dog Class
+    
+    """
+        We need to create a special function called the "constructor" which creates instances of objects.
+        To create the constructor we need to use a reserved namespace function __init__ for initialize
+        
+    """
+    
+    def __init__(self,breed,age,color,name): #Our parameters are self and the attributes that want to specify
+        self.breed = breed
+        self.age = age
+        self.color = color
+        self.name = name
+        #The body is assigning the parameters to the attributes
+        
+    def bark(self):
+        print(f"{self.name} barks")
+        
+
+jerry = dog("Shiba",6,"White","jerry")
+print(f"Jerry's age is: {jerry.age}")
+
+""" 
+    In this example, jerry is an instance of a dog with attributes
+    
+    breed = "shiba"
+    age = 6
+    color = "White"
+    
+    So we've made a class, we want to create methods for this class. Jerry wants to do stuff
+"""
+
+jerry.bark()
+
+"""
+Overall you can think of OOP as a way to conveniently store information all under one variable name (class) 
+and also create functions that manipulate data about said object
+"""
+
+""" 
+Lab 5 was a student directory and it was pretty miserable because you had to do a lot of work with manipulating
+dictionaries (and especially nested dictionaries) We can make this a lot easier by doing an object oriented
+approach
+"""
+
+class student:
+    #Constructor
+    def __init__(self,gradelevel,email,grades,name):
+        self.name = name
+        self.gradelevel = gradelevel
+        self.email = email
+        self.grades = grades
+        
+    #str function for use with print()
+    def __str__(self):
+        return(f"{self.name}'s name is {self.name}\n {self.name}'s grade level is {self.gradelevel} \n {self.name}'s email is {self.email}\n {self.name}'s grades are {self.grades}")    
+            
+        
+    #Member functions
+    
+    def updateGrades(self):
+        for course in self.grades:
+            newgrade = int(input(f"Update Grade for {course}: "))
+            self.grades[course] = newgrade
+            
+
+mystudent = student(12,"basmacij@calverthall.com",{"math":90,"english":100,"history":85}, "Jack Basmaci")
+
+#mystudent.updateGrades()
+print(mystudent.grades)
+
+""" 
+So now our student class has a member function (method) that updates the grades of each course the student
+takes.
+"""
+
+print(mystudent) 
+
+"""
+printing an instance of an object does not print out the attributes. Typically we want to print out the 
+attributes when we call print(object) 
+"""
+
+
+""" 
+So overall python allows for Object Oriented Programming which allows us to create classes and objects
+that have attributes (member variables) and methods (member functions) that allow for an easy
+
+subject.verb(object) style of programming. 
+"""
