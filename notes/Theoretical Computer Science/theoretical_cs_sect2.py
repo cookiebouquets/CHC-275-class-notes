@@ -504,8 +504,6 @@ We can implement this in 3 functions
     2) Path find <= this will find a path
     3) search <= will return the path found by path find
 """
-def validmove(board,x,y):
-    return 0 <= x < len(board) and 0 <= y < len(board[0]) and board[x][y] == 0
 
 """ 
 Our base case is not immediately obvious but there are some natural choices
@@ -538,6 +536,8 @@ BOARD = [
              [0,1,0,0,1,0,1],
              [0,1,0,0,1,0,0],        
     ]
+def validmove(board,x,y):
+    return 0 <= x < len(board) and 0 <= y < len(board[0]) and board[x][y] == 0
 
 
 def pathfind(board,x,y,path): 
