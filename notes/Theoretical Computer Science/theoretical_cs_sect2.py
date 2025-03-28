@@ -383,9 +383,9 @@ print(fib(4))
 """ 
 So the actual question you should be asking now is why is this useful at all? 
 
-Recursion accomplishes two things typicall
+Recursion accomplishes two things typically
 
-    1) It typically uses less memory (I'll do an example of this)
+    1) It typically uses less memory (I'll do an example of this) <= Function calls also stuff on the stack
     2) It's really good at path finding algorithms (basically all of computer science)
     
 Most problems in CS boil down to
@@ -443,9 +443,11 @@ Check the ends
 """
 
 def recursive_palindrome(word):
+    #Base Case
     if len(word) == 1:
         return True
     
+    #Reecursive Case
     if word[0] == word[len(word) -1]:
         return recursive_palindrome(word[1:len(word) -1])
     else:
@@ -506,35 +508,166 @@ def validmove(board,x,y):
     return 0 <= x < len(board) and 0 <= y < len(board[0]) and board[x][y] == 0
 
 """ 
-Base Case: 
-If we're at the exit just return the coordinate that we're at (len(board),len(board[0]))
+Our base case is not immediately obvious but there are some natural choices
 
-Recursive Cases:
-Down:
-    Check if (x+1,y) is a valid move, if it is path find to (x+1,y)
+    Base Case:
+    If we're at the end (len(BOARD)-1, len(BOARD[0]) -1), append that to the path
+    return true
     
-Right: 
-    Check if (x,y+1) is a valid move, if it is, path find to (x,y+1)
+    Recursive Case: 
+    We need to check if the move is valid
     
-    
-path find = append to path and go to the next unit (return true)
+    Three cases:
+        1. Recursively path find down (x+1,y)
+            a. append if it works
+            b. return true
+        2. Recursively path find to the right (x,y+1)
+            a. append if it works
+            b. return true
+        3. If we need to back track, just remove the last element of our path 
+        
+    Return false if we cant find a path 
 """
+
+
+BOARD = [ 
+             [0,1,1,1,0,0,0],
+             [0,1,0,1,1,0,0],
+             [0,0,0,0,0,1,0],
+             [0,0,1,1,0,0,1],
+             [0,1,0,0,1,0,1],
+             [0,1,0,0,1,0,0],        
+    ]
+
 
 def pathfind(board,x,y,path): 
     #Base Case
-    if x == len(board) -1 and y == len(board[0]) - 1:
-        return path
-    
-    #Recursive Case
-    
+    if x == len(board) - 1 and y == len(board[0]) -1:
+        path.append((x,y))
+        return True
+
+    #Recursive 
     if validmove(board,x,y):
         path.append((x,y))
-        if pathfind(board,x+1,y):
+        
+        #Down Case:
+        if pathfind(board,x+1,y,path):
             return True
         
-        if pathfind(board,x,y+1):
+        #Right Case: 
+        if pathfind(board,x,y+1,path):
             return True
-        
-        path.pop()
-        
+
+        #Backtrack case:
+        path.pop() 
     return False
+    
+def search(board):
+    path = []
+    if pathfind(board,0,0,path):
+        return path
+    else:
+        return "Path not found"
+    
+print("Path")
+print(search(BOARD))
+
+""" 
+Basically anything that you've done with a forloop or while can be done recursively, but it'll be more 
+difficult if the problem doesn't really call for it. Path finding is really the best use case of it
+
+And also counting algorithms are very good:
+
+I'm going to a give of string of a's and b's and we want to return a list that counts all of the individual
+a's and b's in that string
+"""
+
+def iter_as_bs(string):
+    count = [0,0]
+    for char in string:
+        if char == "a":
+            count[0] +=1 
+        if char == "b":
+            count[1] +=1
+            
+    return count
+
+print("a's and b's")
+message = "abbbaabbaab"
+print(iter_as_bs(message))
+
+""" 
+The algorithm for this is going to be effectively the same thing as doing palindrome. All we want to look at
+is the fist letter of the string and recursively call the function on the substring with the first character 
+removed
+
+"abbbaabbaab"
+ ^ a
+ 
+"bbbaabbaab"
+ ^ b
+ 
+"bbaabbaab"
+.
+.
+.
+""
+^ return the list 
+
+Basecase: is if the string is empty
+    1) return the original list
+    
+Recursive Case:
+    return as and bs(list, string-1)
+"""
+
+def recursive_as_bs(string,count):
+    #Base Case
+    if len(string) == 0:
+        return count
+    
+    #Recursive Case
+    if string[0] == "a":
+        count[0] +=1 
+        return recursive_as_bs(string[1:], count)
+    if string[0] == "b":
+        count[1] +=1 
+        return recursive_as_bs(string[1:], count)
+    
+print("Recursive a's b's")
+print(recursive_as_bs(message,[0,0]))
+
+""" 
+For people who are interested, a good problem to try is to take a bunch of open and closed parentheses
+
+(())))(()(()(()())())))))())) 
+
+^Recurrsively count each pair of parentheses
+
+base case:
+    would be the same thing
+    
+recursive case:
+    you gotta figure that out
+"""
+
+""" 
+Lab 8: Labrynth 
+
+You have two agents path finding 
+
+    1) player agent: they spawn top left and need to pathfind to the bottom right
+    
+    2) minotaur agent: they spawn in the middle of the grid and they want to path find to the player agent
+    
+    coding a reasonable ai for the minotaur is going to be basically impossible in this class, what we're
+    going to do is make it path in a random direction up until it hits the player or a wall
+    
+    if the player exits, they win and if the minotaur finds the player, the minotaur wins
+    
+    This is most likely going to be the last lab of the year before projects because it's going to be 
+    really hard to do. 
+    
+    It'll be released for both sections day 6
+"""
+    
