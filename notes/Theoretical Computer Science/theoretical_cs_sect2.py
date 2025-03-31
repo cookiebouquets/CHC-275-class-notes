@@ -671,3 +671,216 @@ You have two agents path finding
     It'll be released for both sections day 6
 """
     
+#March 31, DAY 6
+
+""" 
+I still want to do more recursion, so today we're going to discuss some searching and sorting
+algorithms and how it ties into the previous three days of the cycle.
+
+Three main problem types:
+    1) Searching a list
+    2) Sorting a list
+    3) Pathfinding on a graph 
+    
+We also have Big-O notation to determine the runtime of our algorithms 
+"""
+
+nums = [x for x in range(1,100)]
+
+""" 
+We're going to assume a sorted list of numbers:
+
+    1)At what index is the number we're looking for 
+    
+In this case we happened to have all numbers between 1-99 so we can just do a direct lookup, but 
+we might not have every number
+
+    2) We don't really know what numbers are in the list 
+    
+    3) We want to optimize for time complexity 
+    
+The naive way to do this is to just do a for-loop over the list and return the index where we found 
+the number, then we have our result
+"""
+
+def linear_search(list,target):
+    index = 0
+    while index < len(list):
+        if list[index] == target:
+            return index
+        else:
+            index+=1
+            
+            
+    if index == len(list) - 1:
+        return "Not found"
+    
+print("Linear search")
+print(linear_search(nums,84))
+
+""" 
+84 was our target and it was found at the 83rd index because lists start at index 0. So the question is 
+how many times did we a check in this algorithm? 
+
+The answer: 84 checks 
+
+Why do we call this algorithm linear search? 
+
+f(x) = x <= linear function
+
+This is called linear search because it just returns the index of the original number, we had to search
+every single value in our list up until we found it. 
+
+This algorithm is O(n). 
+
+We can definitely do better than this.
+"""
+
+"""  
+Has anyone heard of binary search? What binary search does is check the midpoint of our list, and checks
+to see if our target is bigger or smaller than the midpoint
+
+bigger or smaller part <= binary part 
+
+    1)If its bigger, look at the middle of the list starting from the original mid point to the end
+    2) if its smaller, look at the middle of the list starting from the beginning up until the original 
+    midpoint
+
+There is something recursive going on in binary search:
+
+    1) we are looking at increasingly smaller lists up until we get the result or the number isnt in the list
+    
+This is faster than linear search because we're halving the size of the list after every iteration. 
+We're only checking at most half of the amount of numbers from original 
+
+
+Base Case:
+    1) If the midpoint of our list is the actual target 
+        return 1
+        
+    2) If the value isnt in the list
+        return not found 
+        
+
+Recursive case
+    1) Take the midpoint of the list
+    2) compare our number to see if its bigger or smaller
+        a) If it's bigger, discard the left half of the list
+        b) If it's smaller, discard the right half of the list
+    3) Do binary search again on the smaller list
+    
+"""
+
+def binary_search(list,target):
+    print(list)
+    #BASE CASE: Not Found
+    if len(list) == 1 and list[0] != target:
+        return "not found"
+    
+    #BASE CASE: Found at midpoint
+    if list[len(list)//2] == target:
+        return "found"
+    
+    #Recursive Case: Bigger, discard right half 
+    if list[len(list)//2] > target:
+        return binary_search(list[0:len(list)//2],target)
+    
+    #Recursive Case: Bigger, discard right half 
+    if list[len(list)//2] < target:
+        return binary_search(list[len(list)//2:],target)
+    
+print(binary_search(nums,84))
+
+""" 
+We found 84 in 4 iterations. Clearly binary search is significantly better than linear search. 
+
+What is the runtime complexity of binary search. 
+
+we are taking a list of numbers and effectively halving at every iteration.
+
+It's O(log n) which is faster than O(n)
+
+This is because halving the size of a list is comparable to logarithmic decay. 
+
+There is a better way to write binary search so that it actually returns the amount of iterations it takes
+
+"""
+
+
+""" 
+We want to sort numbers now. Our postulates are
+
+1) we have a list of unsorted numbers (or sorted)
+2) we want to sort them in the least amount of time (optimizing for time complexity).
+
+Let's think of a recursive algorithm to do this.
+
+We know recursion can take a problem and make into smaller subproblems. We want to the same thing for
+sorting. 
+
+What if we took a list of numbers and split down the middle and sorted each sublist, then we'll have
+a recursive type problem.  
+
+Base Case:
+    1) Our list is of length 1 or 0, we're already sorted
+    
+Recursive Case:
+    1) Split our list down the middle
+    2) Do the same base case for the two sublists 
+    
+At the end:
+    1) Zip the lists back together
+    
+This algorithm is called merge sort. It's called merge sort because we're merging two smaller lists
+back into a larger list
+"""
+
+nums = [7,4,5,9,10,15,13,12,1,3,2]
+
+def merge_sort(nums):
+    print(f"merge sort on {nums}")
+    #Base Case: If the list of numbers is length 1 or 0, just return the numbers
+    
+    if len(nums) == 1 or len(nums) == 0:
+        return nums
+    
+    
+    #Split the list between left and right
+    left = merge_sort(nums[:len(nums)//2])
+    
+    right = merge_sort(nums[len(nums)//2:])
+    
+    #Zip the lists back together
+    ileft = 0
+    iright = 0
+    
+    sorted = []
+    
+    """ 
+    If you don't know how to zip things together, what we have to is compare each element at index 0
+    append the smaller one into the sorted list and increment that index by 1 up until we run out of numbers
+    """
+    
+    while len(sorted) < len(nums):
+        if left[ileft] < right[iright]:
+            sorted.append(left[ileft])
+            ileft +=1
+        
+        else:
+            sorted.append(right[iright])
+            iright+=1
+            
+        if ileft == len(left) :
+            sorted.extend(right[iright:])
+            print("Merge Sort Complete")
+            return sorted
+            
+        if iright == len(right):
+            sorted.extend(left[ileft:])
+            print("Merge Sort Complete")
+            return sorted
+            
+print(merge_sort(nums))
+""" 
+Merge Sort is O(n log n)
+"""
