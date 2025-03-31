@@ -857,7 +857,7 @@ def merge_sort(nums):
     sorted = []
     
     """ 
-    If you don't know how to zip things together, what we have to is compare each element at index 0
+    If you don't know how to zip things together, what we have to do is compare each element at index 0
     append the smaller one into the sorted list and increment that index by 1 up until we run out of numbers
     """
     
