@@ -839,8 +839,9 @@ nums = [7,4,5,9,10,15,13,12,1,3,2]
 
 def merge_sort(nums):
     print(f"merge sort on {nums}")
-    #Base Case: If the list of numbers is length 1 or 0, just return the numbers
     
+    
+    #Base Case: If the list of numbers is length 1 or 0, just return the numbers
     if len(nums) == 1 or len(nums) == 0:
         return nums
     
@@ -870,7 +871,7 @@ def merge_sort(nums):
             sorted.append(right[iright])
             iright+=1
             
-        if ileft == len(left) :
+        if ileft == len(left):
             sorted.extend(right[iright:])
             print("Merge Sort Complete")
             return sorted
