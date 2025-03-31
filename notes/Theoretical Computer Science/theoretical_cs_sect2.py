@@ -612,10 +612,10 @@ removed
 .
 .
 ""
-^ return the list 
+^ return the count list
 
 Basecase: is if the string is empty
-    1) return the original list
+    1) return the count list
     
 Recursive Case:
     return as and bs(list, string-1)
@@ -848,7 +848,6 @@ def merge_sort(nums):
     
     #Split the list between left and right
     left = merge_sort(nums[:len(nums)//2])
-    
     right = merge_sort(nums[len(nums)//2:])
     
     #Zip the lists back together
