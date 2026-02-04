@@ -4,6 +4,7 @@ Section:
 Description: Lab 4 
 """
 
+import math
 
 
 """
@@ -40,7 +41,7 @@ Return Type: Float
 Description: Calculates the median for the list and returns the value  
 """
 def getMedian(userList):
-    pass
+    userList = sorted(userList)
 
 """ 
 Function Name: getMin
@@ -61,12 +62,12 @@ def getMax(userList):
     pass
 
 """ 
-Function Name: emptyList
-Parameters: none
+Function Name: getStdDev
+Parameters: List
 Return Type: none
-Description: Empties out the list of numbers
+Description: Calculates the population Standard Deviation of a list
 """
-def emptyList():
+def getStdDev(userList):
     pass
 
 
@@ -74,3 +75,6 @@ def emptyList():
 def main():
     pass
 
+
+if __name__ == "__main__":
+    main()
